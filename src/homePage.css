@@ -1,0 +1,11 @@
+.homePage {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    color: black;
+}
+
+.homeDiv{
+    margin-bottom: 10px;
+}

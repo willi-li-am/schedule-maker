@@ -1,0 +1,41 @@
+.navbar {
+    display: flex;
+    overflow: hidden;
+    position: fixed;
+    background-color: black;
+    color:white;
+    align-items: center;
+    margin-top:0px;
+    height: 40px;
+    width: 100%;
+    font: bold 20px Arial;
+}
+
+.title{
+    margin-left: 30px;
+}
+
+.creator{
+    margin-left: 55%;
+}
+
+.home{
+    height: 30px;
+    margin-left: 20px;
+    transition: 0.2s;
+}
+
+.home:hover{
+    cursor: pointer;
+    filter:brightness(75%);
+    transition: 0.2s;
+}
+
+.linkedIn{
+    color: white;
+    transition: 0.2s;
+}
+
+.linkedIn:hover{
+    color:rgb(45, 125, 255);
+}

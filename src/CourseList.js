@@ -124,6 +124,7 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                 setCoursePicked(picked)
                 scheduleToFull(picked[course], false, course)
                 accordion(course)
+                setUpdate(!update)
             }
         } else{
             let picked = coursePicked
@@ -131,6 +132,7 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
             setCoursePicked(picked)
             scheduleToFull(picked[course], false, course)
             accordion(course)
+            setUpdate(!update)
         }
     }
     const PrintSchedule = (classes) => {

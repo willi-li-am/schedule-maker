@@ -38,11 +38,12 @@
     width: 70px;
     border: 2px solid black;
     border-top: none;
+    height: 626px
 }
 
 .timeSlot {
     text-align: right;
-    margin: 6.2px;
+    margin: auto;
     margin-right: 5px;
 }
 
@@ -50,6 +51,7 @@
     text-align: center;
     padding: 20px;
     width: 150px;
+    height: 19px;
     border: 2px solid black;
     margin-left: -2px;
 }
@@ -68,7 +70,7 @@
     border-left: none;
     border-right: none;
     width: 190px;
-    height: calc(607px/16);
+    height: calc(31.4px);
 }
 
 .daySlot.top {

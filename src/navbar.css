@@ -8,7 +8,7 @@
     margin-top:0px;
     height: 40px;
     width: 100%;
-    font: bold 20px Arial;
+    font: bold 1.4vw Arial;
 }
 
 .title{
@@ -16,7 +16,8 @@
 }
 
 .creator{
-    margin-left: 55%;
+    margin-left: auto;
+    margin-right: 50px;
 }
 
 .home{

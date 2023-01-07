@@ -4,15 +4,24 @@ import NavBar from './NavBar';
 import CourseInput from './courseInput';
 import CourseList from './CourseList'
 import HomePage from './homePage.js'
+import Schedule from './schedule';
 import classList from './classList_by_course.json'
 
 function App() {
   const [inputFields, setInputFields] = useState([
     {course: ""}, {course: ""}, {course: ""}, {course: ""}, {course: ""}
   ])
+  const [fullSchedule, setFullSchedule] = useState({
+    "M": [],
+    "T": [],
+    "W": [],
+    "R": [],
+    "F": []
+  })
   const [courseTaking, setCourseTaking] = useState(true)
   const [courseList, setCourseList] = useState()
   const [coursePicked, setCoursePicked] = useState({})
+  const [update, setUpdate] = useState(false)
   if(courseTaking){
     return (
       <div className='mainPage'>  
@@ -26,8 +35,8 @@ function App() {
     <>
     <NavBar setCourseTaking={setCourseTaking}/>
     <div className = "app">
-      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked}/>
-      <iframe style={{"border-radius":"12px", "width":"500px", "marginTop":"200px", "marginLeft":"350px"}} src="https://open.spotify.com/embed/album/1WVIJaAboRSwJOe4u0n0Q7?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked} fullSchedule = {fullSchedule} setFullSchedule = {setFullSchedule} setUpdate={setUpdate} update={update}/>
+      <Schedule fullSchedule={fullSchedule} setUpdate={setUpdate} update={update}/>
     </div>
     </>)
   }
@@ -35,5 +44,7 @@ function App() {
 
 export default App;
 
+//add color wheel next to course input
 //Make it make the schedule
+//make it remove if deleted courseList
 //Find a good way to make the schedule thing (grid)

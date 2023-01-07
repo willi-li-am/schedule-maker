@@ -1,0 +1,10 @@
+.shit{
+    margin-bottom: 20px;
+}
+
+.testGroup{
+    display: flex;
+    flex-direction: column;
+    margin-top:100px;
+    margin-left: 20px;
+}

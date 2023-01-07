@@ -1,10 +1,90 @@
-.shit{
+.schedule {
+    margin-top: 40px;
+    width: calc(100vw - 324px);
+    height: calc(100vh - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+}
+
+.weekday {
+    display:flex;
+    flex-direction: row;
+}
+
+.time {
+    width: 70px;
+    border: 2px solid black;
+    border-bottom: none;
+}
+
+.timeSlot.top{
+    margin-top:21px;
+}
+
+.timeSlot.bot {
     margin-bottom: 20px;
 }
 
-.testGroup{
+.timeColumn {
     display: flex;
     flex-direction: column;
-    margin-top:100px;
-    margin-left: 20px;
+    width: 70px;
+    border: 2px solid black;
+    border-top: none;
+}
+
+.timeSlot {
+    text-align: right;
+    margin: 6.2px;
+    margin-right: 5px;
+}
+
+.day{
+    text-align: center;
+    padding: 20px;
+    width: 150px;
+    border: 2px solid black;
+    margin-left: -2px;
+}
+
+.dayColumn {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-top: none;
+    margin-left: -2px;
+    height: 626px;
+}
+
+.daySlot {
+    border:1px solid rgb(197, 197, 197);
+    border-left: none;
+    border-right: none;
+    width: 190px;
+    height: calc(607px/16);
+}
+
+.daySlot.top {
+    border-top: none;
+}
+
+.daySlot.bot {
+    border-bottom: none;
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+}
+
+.textBox {
+    padding: 5px;
+    overflow-wrap: break-word;
+    font: 15px Arial;
 }

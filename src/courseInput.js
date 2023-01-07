@@ -1,6 +1,7 @@
 import classList from "./classList_by_course.json"
 
 function CourseInput({setCourseList, setCourseTaking, setInputFields, inputFields}) {
+
     const handleFormChange = (index, event) => {
         let data = [...inputFields];
         data[index][event.target.name] = event.target.value;

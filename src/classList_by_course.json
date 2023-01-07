@@ -16752,11 +16752,11 @@
             "extra": "Not for ALC students.DOMAIN: 07      CONTEMPORARY ISSUESENSEMBLE: 01"
         }
     ],
-    "Climate": [
+    "365-CCG-AB": [
         {
             "section": "00001",
-            "subject": "TRANSDIS365-CCG-AB",
-            "title": "Change: From Science to Action",
+            "subject": "TRANSDIS",
+            "title": "Climate Change: From Science to Action",
             "schedule": {
                 "M": "1430-1600",
                 "T": "",
@@ -16764,15 +16764,15 @@
                 "R": "",
                 "F": ""
             },
-            "teacher": "",
+            "teacher": "Jessica Burpee",
             "lab": "",
-            "rating": "",
-            "extra": "CIPLINARYLecture Burpee, JessicaFor all students."
+            "rating": 50.95238095238095,
+            "extra": "For all students."
         },
         {
             "section": "00002",
-            "subject": "TRANSDIS365-CCG-AB",
-            "title": "Change: From Science to Action",
+            "subject": "TRANSDIS",
+            "title": "Climate Change: From Science to Action",
             "schedule": {
                 "M": "1600-1730",
                 "T": "",
@@ -16780,10 +16780,10 @@
                 "R": "",
                 "F": ""
             },
-            "teacher": "",
+            "teacher": "Richard L\u00e9veill\u00e9",
             "lab": "",
-            "rating": "",
-            "extra": "CIPLINARYLecture L\u00e9veill\u00e9, Richard JohnFor all students."
+            "rating": 69.859410430839,
+            "extra": "For all students."
         }
     ]
 }

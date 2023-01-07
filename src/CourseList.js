@@ -2,11 +2,14 @@ import classList from "./classList_by_course.json"
 import "./App.css"
 import {useState} from 'react'
 
-function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, setFullSchedule, setUpdate, update}){
+function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, setFullSchedule, setUpdate, update, colorList, setColorList}){
     const [expanded, setExpanded] = useState({})
 
+    const colors = ["#00EBFF", "#FF8000", "#35FF00", "#0067FF", "#BE00FF", "#FF0004", "#E8FF00", "#F400FF","#0079FF", "#B2FF00", "#00EBFF", "#FF8000", "#35FF00", "#0067FF", "#BE00FF", "#FF0004", "#E8FF00", "#F400FF","#0079FF", "#B2FF00"]
+    let colorL = colorList
     for(const classes in coursePicked) {
         if(!(courseList.includes(classes))){
+            delete colorL[classes]
             let course = coursePicked[classes]
             let schedule = course['schedule']
             for(const day in schedule) {
@@ -26,7 +29,13 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
             let coursePickedList = coursePicked
             delete coursePickedList[classes]
             setCoursePicked(coursePickedList)
+            setColorList(colorL)
         }
+    }
+    for(let i = 0; i < courseList.length; i++) {
+        let color = colors[i]
+        colorL[courseList[i]] = color
+        setColorList(colorL)
     }
 
     const doesFit = (schedule) => {
@@ -35,10 +44,16 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
             let full = fullSchedule[day]
             for(let i = 0; i < full.length; i++){
                 if((time[0] >= full[i][0])&&(time[0] < full[i][1])){ //Start must not be in between time interval, but can start at end of class
+                    console.log(time[0]+", "+time[1])
+                    console.log(full[i][0]+", "+full[i][1])
                     return false
                 }if ((time[1] > full[i][0])&&(time[1] <= full[i][1])) { //End must not be end anywhere in time interval, but can end at start of class
+                    console.log(time[0]+", "+time[1])
+                    console.log(full[i][0]+", "+full[i][1])
                     return false
                 }if((time[0]<= full[i][0])&&(time[1]>full[i][0])){ //Can't start before class and end after class
+                    console.log(time[0]+", "+time[1])
+                    console.log(full[i][0]+", "+full[i][1])
                     return false
                 }
             }
@@ -46,13 +61,14 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
         return true
     }
 
-    const scheduleToFull = (course, remove) => {
+    const scheduleToFull = (course, remove, code) => {
         let schedule = course['schedule']
         if(!remove) {
             for(const day in schedule) {
                 if(schedule[day] !== ""){
                     let time = schedule[day].split("-")
                     time.push(course)
+                    time.push(code)
                     let fullScheduleList = fullSchedule
                     fullScheduleList[day].push(time)
                     setFullSchedule(fullScheduleList)
@@ -63,6 +79,7 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                 if(schedule[day] !== ""){
                     let time = schedule[day].split("-")
                     time.push(course)
+                    time.push(code)
                     let fullScheduleList = fullSchedule
                     for(let i = 0; i < fullScheduleList[day].length; i++){
                         if(time[2] === fullScheduleList[day][i][2]){
@@ -94,7 +111,7 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
         if(course in coursePicked){
             if(classList[course][index] === coursePicked[course]){
                 let picked = coursePicked
-                scheduleToFull(picked[course], true)
+                scheduleToFull(picked[course], true, course)
                 delete picked[course]
                 setCoursePicked(picked)
                 if(expanded[course] === true){
@@ -105,14 +122,14 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                 let picked = coursePicked
                 picked[course] = classList[course][index]
                 setCoursePicked(picked)
-                scheduleToFull(picked[course], false)
+                scheduleToFull(picked[course], false, course)
                 accordion(course)
             }
         } else{
             let picked = coursePicked
             picked[course] = classList[course][index]
             setCoursePicked(picked)
-            scheduleToFull(picked[course], false)
+            scheduleToFull(picked[course], false, course)
             accordion(course)
         }
     }

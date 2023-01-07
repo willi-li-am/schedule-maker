@@ -216,11 +216,4 @@
   flex-direction: row;
 }
 
-.video{
-  margin-top: 40px;
-  width: 1150px;
-  height: calc(100vh - 40px);
-  object-fit: cover;
-}
-
 

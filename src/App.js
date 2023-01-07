@@ -5,7 +5,6 @@ import CourseInput from './courseInput';
 import CourseList from './CourseList'
 import HomePage from './homePage.js'
 import Schedule from './schedule';
-import classList from './classList_by_course.json'
 
 function App() {
   const [inputFields, setInputFields] = useState([
@@ -22,6 +21,7 @@ function App() {
   const [courseList, setCourseList] = useState()
   const [coursePicked, setCoursePicked] = useState({})
   const [update, setUpdate] = useState(false)
+  const [colorList, setColorList] = useState({})
   if(courseTaking){
     return (
       <div className='mainPage'>  
@@ -35,8 +35,8 @@ function App() {
     <>
     <NavBar setCourseTaking={setCourseTaking}/>
     <div className = "app">
-      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked} fullSchedule = {fullSchedule} setFullSchedule = {setFullSchedule} setUpdate={setUpdate} update={update}/>
-      <Schedule fullSchedule={fullSchedule} setUpdate={setUpdate} update={update}/>
+      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked} fullSchedule = {fullSchedule} setFullSchedule = {setFullSchedule} setUpdate={setUpdate} update={update} colorList = {colorList} setColorList = {setColorList}/>
+      <Schedule fullSchedule={fullSchedule} setUpdate={setUpdate} update={update}  colorList = {colorList}/>
     </div>
     </>)
   }

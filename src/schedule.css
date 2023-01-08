@@ -1,3 +1,7 @@
+:root{
+    --view: 100vw
+}
+
 .schedule {
     margin-top: 40px;
     width: calc(100vw - 324px);

@@ -2,8 +2,9 @@ import classList from "./classList_by_course.json"
 import "./App.css"
 import {useState} from 'react'
 
-function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, setFullSchedule, setUpdate, update, colorList, setColorList}){
+function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, setFullSchedule, colorList, setColorList, updateApp, setUpdateApp}){
     const [expanded, setExpanded] = useState({})
+    const [update, setUpdate] = useState(false)
 
     const colors = ["#00EBFF", "#FF8000", "#35FF00", "#0067FF", "#BE00FF", "#FF0004", "#E8FF00", "#F400FF","#0079FF", "#B2FF00", "#00EBFF", "#FF8000", "#35FF00", "#0067FF", "#BE00FF", "#FF0004", "#E8FF00", "#F400FF","#0079FF", "#B2FF00"]
     let colorL = colorList
@@ -100,11 +101,13 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
             expandedList[course] = !expandedList[course]
             setExpanded(expandedList)
             setUpdate(!update)
+            setUpdateApp(!updateApp)
         }else {
             let expandedList = expanded
             expandedList[course] = true
             setExpanded(expandedList)
             setUpdate(!update)
+            setUpdateApp(!updateApp)
         }
     }
     const pick = (index, course) => {
@@ -117,14 +120,14 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                 if(expanded[course] === true){
                     accordion(course)
                 }
-                setUpdate(!update)
+                setUpdateApp(!updateApp)
             } else{
                 let picked = coursePicked
                 picked[course] = classList[course][index]
                 setCoursePicked(picked)
                 scheduleToFull(picked[course], false, course)
                 accordion(course)
-                setUpdate(!update)
+                setUpdateApp(!updateApp)
             }
         } else{
             let picked = coursePicked
@@ -355,6 +358,10 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                             )
                         }
                     }}
+                }
+                else{
+                    console.log("wtf")
+                    return (<div >wtf</div>)
                 }
             })}
             </>

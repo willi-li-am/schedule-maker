@@ -20,7 +20,8 @@ function App() {
   const [courseTaking, setCourseTaking] = useState(true)
   const [courseList, setCourseList] = useState()
   const [coursePicked, setCoursePicked] = useState({})
-  const [update, setUpdate] = useState(false)
+  const [updateApp, setUpdateApp] = useState(false)
+
   const [colorList, setColorList] = useState({})
   if(courseTaking){
     return (
@@ -35,8 +36,8 @@ function App() {
     <>
     <NavBar setCourseTaking={setCourseTaking}/>
     <div className = "app">
-      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked} fullSchedule = {fullSchedule} setFullSchedule = {setFullSchedule} setUpdate={setUpdate} update={update} colorList = {colorList} setColorList = {setColorList}/>
-      <Schedule fullSchedule={fullSchedule} setUpdate={setUpdate} update={update}  colorList = {colorList}/>
+      <CourseList courseList = {courseList} coursePicked = {coursePicked} setCoursePicked={setCoursePicked} fullSchedule = {fullSchedule} setFullSchedule = {setFullSchedule} colorList = {colorList} setColorList = {setColorList} updateApp = {updateApp} setUpdateApp = {setUpdateApp}/>
+      <Schedule fullSchedule={fullSchedule} colorList = {colorList}/>
     </div>
     </>)
   }

@@ -359,10 +359,6 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
                         }
                     }}
                 }
-                else{
-                    console.log("wtf")
-                    return (<div >wtf</div>)
-                }
             })}
             </>
         )

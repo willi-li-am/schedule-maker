@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/schedule-maker/static/css/main.6326e5ce.css",
-    "main.js": "/schedule-maker/static/js/main.776b0ee5.js",
+    "main.js": "/schedule-maker/static/js/main.09fda79a.js",
     "static/js/787.71e672d5.chunk.js": "/schedule-maker/static/js/787.71e672d5.chunk.js",
     "index.html": "/schedule-maker/index.html",
     "main.6326e5ce.css.map": "/schedule-maker/static/css/main.6326e5ce.css.map",
-    "main.776b0ee5.js.map": "/schedule-maker/static/js/main.776b0ee5.js.map",
+    "main.09fda79a.js.map": "/schedule-maker/static/js/main.09fda79a.js.map",
     "787.71e672d5.chunk.js.map": "/schedule-maker/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6326e5ce.css",
-    "static/js/main.776b0ee5.js"
+    "static/js/main.09fda79a.js"
   ]
 }

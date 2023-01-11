@@ -26,23 +26,23 @@ Lists of courses to try with:
 # Future Features to be added:
 
 1. No class time
-- Can select when to not have classes
+  - Can select when to not have classes
 2. Course hovering 
-- When hovering, show how the class would look like on the schedule instead of needing to click on it every time
+  - When hovering, show how the class would look like on the schedule instead of needing to click on it every time
 3. Best schedule generator
-- With greedy algorithm, choose the best schedule in terms of teacher rating while following restrictions from user
+  - With greedy algorithm, choose the best schedule in terms of teacher rating while following restrictions from user
 4. Account creation
-- Makes schedule saving available
-- From what program someone is in, will gray out courses that they are not allowed to take
-- Option to not show courses that need fees
-- Settings to change everything mentioned above
+  - Makes schedule saving available
+  - From what program someone is in, will gray out courses that they are not allowed to take
+  - Option to not show courses that need fees
+  - Settings to change everything mentioned above
 5. Autocomplete
-- While typing in courses, shows possible courses that they are typing out
+  - While typing in courses, shows possible courses that they are typing out
 6. Option to sort by teacher rating
-- Self explanatory
-- Maybe other sorting options
+  - Self explanatory
+  - Maybe other sorting options
 7. Add additional courses
-- Some people have courses that aren't in the course list (those in technical programs), so to make the website work for them, add an additional course option where they can manually put in what time their program courses take place so that they could use the service
+  - Some people have courses that aren't in the course list (those in technical programs), so to make the website work for them, add an additional course option where they can manually put in what time their program courses take place so that they could use the service
 8. Improved UI/UX (not a feature)
-- Generally improve the user interface and user experience to make it more appealing to everyone
+  - Generally improve the user interface and user experience to make it more appealing to everyone
 

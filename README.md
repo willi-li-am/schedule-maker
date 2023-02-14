@@ -7,9 +7,9 @@ course registration.
 
 Made with ReactJS with the help of react-gh-pages to deploy to github pages.
 
-The list of courses comes from a pdf parser that I made with the help of pdfplumber
+The list of courses comes from a pdf parser that I made, which parses an official pdf of all courses at John Abbott College which includes (Teacher Name, Course Section, Schedule, Course Title, Course Code)
 
-The teacher ratings come from a webscraper that I made with the help of Selenium. All ratings come from RateMyProfessor.com
+The teacher ratings come from a webscraper that I made. All ratings come from RateMyProfessor.com and uses a function to turn it into a rating out of 100
 
 To use the website click [here](https://trollermaner.github.io/schedule-maker)
 

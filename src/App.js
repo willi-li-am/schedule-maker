@@ -5,6 +5,7 @@ import CourseInput from './courseInput';
 import CourseList from './CourseList'
 import HomePage from './homePage.js'
 import Schedule from './schedule';
+import HowTo from './howTo';
 
 function App() {
   const [inputFields, setInputFields] = useState([
@@ -29,6 +30,7 @@ function App() {
         <NavBar setCourseTaking={setCourseTaking}/>
         <HomePage/>
         <CourseInput inputFields = {inputFields} setInputFields={setInputFields} setCourseTaking={setCourseTaking} setCourseList={setCourseList}/>
+        <HowTo/>
       </div>
     );
   } else if (!courseTaking){

@@ -1,4 +1,4 @@
-import classList from "./classList_by_course.json"
+import classList from "./final_results.json"
 import "./App.css"
 import {useState} from 'react'
 
@@ -174,189 +174,75 @@ function CourseList({courseList, coursePicked, setCoursePicked, fullSchedule, se
             {classList[x].map((classes, jindex) => {
                 if(expanded[x]!== true){if(x in coursePicked){
                     if(classes === coursePicked[x])
-                    {if(classes['lab'] === "" || classes['lab']['teacher'] === classes['teacher']) {
-                        if(classes['extra'] === ""){
+                    {if(!("teacher" in classes["lab"]) || classes['lab']['teacher'] === classes['teacher']) {
                             return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
+                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        
+
                     }
                     else {
-                        if(classes['extra'] === ""){
+
                             return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
+                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        
+                       
                     }}
-                    else{
-                        if(classes['lab'] === "" || classes['lab']['teacher'] === classes['teacher']) {
-                            if(classes['extra'] === ""){
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            else{
-                                let extra = classes['extra'].split(" ")
-                                if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                    return(
-                                        <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                    )
-                                }
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                                )
-                            }
-                        } else{
-                            if(classes['extra'] === ""){
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            else{
-                                let extra = classes['extra'].split(" ")
-                                if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                    return(
-                                        <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                    )
-                                }
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                                )
-                            }
-                        }
-                    }
-                } else if(!doesFit(classes["schedule"])){
-                    if(classes['lab'] === "" || classes['lab']['teacher'] === classes['teacher']) {
-                        if(classes['extra'] === ""){
+
+                else{
+                    if(!("teacher" in classes["lab"]) || classes['lab']['teacher'] === classes['teacher']) {
+
                             return(
-                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
+                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        
                     } else{
-                        if(classes['extra'] === ""){
+
                             return(
-                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
+                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
+                        
+                    }
+                }
+                } else if(!doesFit(classes["schedule"])){
+                    if(!("teacher" in classes["lab"]) || classes['lab']['teacher'] === classes['teacher']) {
                             return(
-                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
+                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
+                        
+                    } else{
+                            return(
+                                <div className='courseBoxInvalid' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<PrintSchedule key={jindex} classes={classes}/></div>
+                            )
+                        
                     }
                 } else{
-                    if(classes['lab'] === "" || classes['lab']['teacher'] === classes['teacher']) {
-                        if(classes['extra'] === ""){
+                    if(!("teacher" in classes["lab"]) || classes['lab']['teacher'] === classes['teacher']) {
+
                             return(
-                                <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
+                                <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
                             )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        
                     } else{
-                        if(classes['extra'] === ""){
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                            )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        return(
+                            <div onClick={() => pick(jindex, x)} className='courseBox' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<PrintSchedule key={jindex} classes={classes}/></div>
+                        )
                     }
                 }}
                 if((expanded[x] === true) && (x in coursePicked)){
                     if(classes === coursePicked[x])
-                    {if(classes['lab'] === "" || classes['lab']['teacher'] === classes['teacher']) {
-                        if(classes['extra'] === ""){
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                            )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                    {if(!("teacher" in classes["lab"]) || classes['lab']['teacher'] === classes['teacher']) {
+
+                        return(
+                            <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<PrintSchedule key={jindex} classes={classes}/></div>
+                        )
+                        
                     }
                     else {
-                        if(classes['extra'] === ""){
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                            )
-                        }
-                        else{
-                            let extra = classes['extra'].split(" ")
-                            if(extra[0].match(/[A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9][A-Z0-9][-][A-Z0-9][A-Z0-9]/)){
-                                return(
-                                    <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/></div>
-                                )
-                            }
-                            return(
-                                <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>Rating: {Math.round(classes["rating"] * 10) / 10}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>Rating: {Math.round(classes["lab"]["rating"]*10)/10}<PrintSchedule key={jindex} classes={classes}/><div className="extra">{classes['extra']}</div></div>
-                            )
-                        }
+                        return(
+                            <div onClick={() => pick(jindex, x)} className='courseBoxSelected' key={jindex}>{classes["teacher"]}<br/>{classes["title"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<br/>Section: {classes["section"]}<br/>Lab: {classes["lab"]["teacher"]}<br/>{classes["rating"] !== "DNE" ? <>Rating: {classes["rating"]["rating"]}/5 {classes["rating"]["reviews"]} reviews </> : <>Rating DNE</>}<PrintSchedule key={jindex} classes={classes}/></div>
+                        )
                     }}
                 }
             })}

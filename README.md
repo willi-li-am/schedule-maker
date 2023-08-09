@@ -11,7 +11,7 @@ The list of courses comes from a pdf parser that I made, which parses an officia
 
 The teacher ratings come from a webscraper that I made. All ratings come from RateMyProfessor.com and uses a function to turn it into a rating out of 100
 
-To use the website click [here](https://trollermaner.github.io/schedule-maker)
+To use the website click <a href = "https://willi-li-am.github.io/schedule-maker" target = "_blank">here</a>
 
 # Screenshots
 <img width="1470" alt="image" src="https://github.com/willi-li-am/schedule-maker/assets/52115161/e26b946c-98b7-445b-8e0f-79fd4b6f4d23">

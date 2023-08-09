@@ -13,6 +13,12 @@ The teacher ratings come from a webscraper that I made. All ratings come from Ra
 
 To use the website click [here](https://trollermaner.github.io/schedule-maker)
 
+# Screenshots
+<img width="1470" alt="image" src="https://github.com/willi-li-am/schedule-maker/assets/52115161/e26b946c-98b7-445b-8e0f-79fd4b6f4d23">
+<img width="1470" alt="image" src="https://github.com/willi-li-am/schedule-maker/assets/52115161/54e05c2d-95c8-4f78-8758-3fa8300665a0">
+<img width="323" alt="image" src="https://github.com/willi-li-am/schedule-maker/assets/52115161/75737047-ff4a-42c3-8c93-3a39f2de2e09">
+
+
 Lists of courses to try with:
 | Course Code      | Course Title |
 | ---------------- | ------------ |
